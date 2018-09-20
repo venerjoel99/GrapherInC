@@ -1,3 +1,9 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>       /* for cos(), sin(), and sqrt() */
+#include <GL/glut.h>    /* OpenGL Utility Toolkit header */
+
 void init(){
 }
 
@@ -50,6 +56,6 @@ int main(int argc, char **argv){
     glutInit(&argc, argv);
     setupGraphics();
     glutMainLoop();
-    
+    return 0;
 }
 
