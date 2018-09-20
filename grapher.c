@@ -7,12 +7,35 @@
 void init(){
 }
 
+typedef enum{
+    RESERVED, CUBE_SIDE, CUBE_EDGE, CUBE_WHOLE
+} displayLists;
+
 static GLfloat lightColor[] = {0.8, 1.0, 0.8, 1.0}; /* green-tinted */
+static GLfloat[][2] cube = {{0,1}, {0,11}, {10,1}, {10,11}};
+static GLflot width = 10;
+static skinColor[] = {0.1, 1.0, 0.1, 1.0};
 
 void configureLighting(){
 }
 
 void configureViews(){
+}
+
+void drawCube(){
+    extrudeSolidFromPolygon(cube, sizeof(cube), CUBE_SIDE, CUBE_EDGE, CUBE_WHOLE);
+}
+
+void displayCube(){
+    glPushMatrix();
+    glTranslatef(-8, 0, -5);
+    glMaterialfv(GL_FRONT, GL_DIFFUSE, skinColor);
+    glCallList(CUBE_WHOLE);
+    glPopMatrix();
+}
+
+void display(){
+    displayCube();
 }
 
 void setupGraphics(){
@@ -49,12 +72,14 @@ void setupGraphics(){
     glEnable(GL_LIGHTING);
     
     //Keep black backgrounds
+    glutDisplayFunc(display);
 }
 
 int main(int argc, char **argv){
     
     //Init GLUT
     glutInit(&argc, argv);
+    drawCube();
     setupGraphics();
     glutMainLoop();
     return 0;
