@@ -7,6 +7,7 @@
 void init(){
 }
 
+static GLfloat lightColor[] = {0.8, 1.0, 0.8, 1.0}; /* green-tinted */
 
 void configureLighting(){
 }
@@ -18,7 +19,7 @@ void setupGraphics(){
     
     //Create a window
     glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH | GLUT_STENCIL | GLUT_MULTISAMPLE); 
-    glutCreateWindow("Grapher");.
+    glutCreateWindow("Grapher");
     
     //Create cameras
     //Position and orient cameras
